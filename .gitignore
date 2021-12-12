@@ -1,3 +1,4 @@
+*.lnk
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
