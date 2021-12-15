@@ -44,6 +44,7 @@
 \usepackage{graphicx}
 \graphicspath{%
 	{images}
+	{simulation-results}
 }
 \setlength\fboxsep{3pt}
 \setlength\fboxrule{1pt}
@@ -165,3 +166,8 @@ isbn=false,% Показывать или нет ISBN, ISSN, ISRN
 \titleformat{\section}{\Large\normalfont\bfseries\filcenter}{}{1em}{}
 \titleformat{\subsection}{\large\normalfont\bfseries\filcenter}{}{1em}{}
 \titleformat{\subsubsection}{\normalfont\bfseries\filcenter}{}{1em}{}
+
+
+\newcommand\chap[1]{%
+	\chapter*{#1}%
+	\addcontentsline{toc}{chapter}{#1}}
