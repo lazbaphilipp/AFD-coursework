@@ -1,0 +1,43 @@
+\chapter{Приложение 1: Моделирование излучателя}
+
+Рассчитаем антенну с помощью Keysight EmPRO. Диаграмму направленности в плоскостях X,Y можно увидеть на Рис. \ref{fig:simulation-results}.
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[scale=1.8]
+		\begin{polaraxis}[
+			xticklabel=$\pgfmathprintnumber{\tick}^\circ$,
+			xtick={0,30,60,...,330},
+			ytick={-15,-10,-5,0,7.5,10.5,15},
+			ymin=-15, ymax=15,
+			y coord trafo/.code=\pgfmathparse{#1+15},
+			rotate=-90,
+			y coord inv trafo/.code=\pgfmathparse{#1-15},
+			x dir=reverse,
+			xticklabel style={anchor=-\tick-90},
+			yticklabel style={anchor=east, xshift=-4.75cm},
+			y axis line style={yshift=-4.75cm},
+			ytick style={yshift=-4.75cm}
+			]
+			\addplot [no markers, thick, blue] table [col sep=comma,x=ang, y=gain0] {simulation-results/res.dat};
+			\addlegendentry{$\varphi=0^\circ$};
+			\addplot [no markers, thick, red] table [col sep=comma,x=ang, y=gain90] {simulation-results/res.dat};
+			\addlegendentry{$\varphi=90^\circ$};
+			
+			\node[pin={[pin edge={thin},pin distance=3ex]190:{\parbox{2em}{\raggedleft $-15^\circ,$ \\ $-12^\circ$} }}] at (345,7.5) {};
+			\node[pin={[pin edge={thin},pin distance=0.1ex]290:{$\theta=25^\circ$}}] at (25,7.5) {};
+			\node[pin={[pin edge={thin},pin distance=0.1ex]260:{$\theta=20^\circ$}}] at (20,7.5) {};
+			\node at (5,12.5) {$\theta=5^\circ$};
+			\addplot [only marks] table {
+				20 7.5
+				25 7.5
+				345 7.5
+				5 10.5
+			};
+		\end{polaraxis}
+	\end{tikzpicture}
+	\caption{ Диаграмма направленности рассчётной антенны}
+	\label{fig:simulation-results}
+\end{figure}
+
+По графику видно, что отклонение главного луча составило $5^\circ$ и ширина луча по оХ и оУ равна соответственно $40^\circ$ и $32^\circ$, что соотносится с требованием $\theta_\text{ск}= \pm18^\circ$ из ТЗ.

@@ -25,6 +25,7 @@
 
 %% Exta work with math
 \usepackage{amsmath}
+\usepackage{nccmath}
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{amsfonts}
@@ -71,6 +72,10 @@
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
 
+\usepgfplotslibrary{polar}
+\pgfplotsset{compat=1.12}
+
+
 %% Список источников
 %\usepackage[style=gost-authoryear-min,maxcitenames=2,backend=biber,sorting=none]{biblatex}
 \usepackage[%
@@ -88,6 +93,7 @@ isbn=false,% Показывать или нет ISBN, ISSN, ISRN
 ]{biblatex}
 
 \addbibresource{include/references.bib}
+
 \DefineBibliographyStrings{russian}{%
 	bibliography = {Список источников},
 }
